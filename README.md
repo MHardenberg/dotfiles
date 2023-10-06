@@ -1,11 +1,11 @@
 # dotfiles
 
 ## Install:
-echo ".cfg" >> .gitignore
+echo ".dotfiles" >> .gitignore
 
-git clone --bare <remote-git-repo-url> $HOME/.cfg
+git clone --bare <remote-git-repo-url> $HOME/.dotfiles
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 config config --local status.showUntrackedFiles no
 
