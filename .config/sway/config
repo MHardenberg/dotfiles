@@ -26,7 +26,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/michel/.config/sway/bg/ArchWaveBlue.png fill
 #
 # Example configuration:
 #
@@ -138,6 +138,11 @@ exec swayidle -w \
     bindsym $mod+Shift+4 move container to workspace number $ws4
     bindsym $mod+Shift+5 move container to workspace number $ws5
 
+    for_window [class="thunar"] move to workspace $ws3, focus
+    for_window [class="gimp"] move to workspace $ws4, focus
+    for_window [class="steam"] move to workspace $ws4, focus
+    for_window [class="firefox"] move to workspace $ws5, focus
+
 
 
     # Note: workspaces can have any name you want, not just numbers.
@@ -205,6 +210,33 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Colours
+# Color shemes for windows (append 99 for 60 and 4D for 30 % tranparency)
+set $opacity 0.99
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
+set $bgcolor    #19172499
+set $in-bgcolor #1f1d2e4D
+set $text       #e0def4
+set $u-bgcolor  #eb6f92
+set $indicator  #a3c1a5
+set $in-text    #09ffc7
+#                       border          background      text            indicator (a line which shows where the next window will be placed)     
+client.focused          $bgcolor        $bgcolor        $text           $indicator
+client.unfocused        $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgcolor
+client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
+
+# font
+font pango:Terminus Bold 11
+
+
+# keymap
+input * {
+        xkb_layout "gb"
+}
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -221,5 +253,22 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+
+
+# Sound
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+
+
+
+
+
+
 
 include /etc/sway/config.d/*
