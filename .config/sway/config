@@ -26,7 +26,10 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/michel/.config/sway/bg/krastorio.jpg fill
+#output * bg /home/michel/.config/sway/bg/krastorio.jpg fill
+#output * bg /home/michel/.config/sway/bg/ArchWaveBlue.png fill
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
 #
 # Example configuration:
 #
@@ -39,9 +42,10 @@ output * bg /home/michel/.config/sway/bg/krastorio.jpg fill
 # Example configuration:
 #
 exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 300000 'swaylock -f -c 000000' \
+          timeout 600000 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'swaylock -f -c 000000'
+bindsym $mod+x exec swaylock
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -230,7 +234,7 @@ client.focused_inactive $in-bgcolor     $in-bgcolor     $in-text        $in-bgco
 client.urgent           $u-bgcolor      $u-bgcolor      $text           $u-bgcolor
 
 # font
-font pango:Terminus Medium 11
+font pango:Terminus Medium 12
 
 
 # keymap
