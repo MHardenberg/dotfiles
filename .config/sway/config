@@ -28,7 +28,8 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /home/michel/.config/sway/bg/krastorio.jpg fill
 #output * bg /home/michel/.config/sway/bg/ArchWaveBlue.png fill
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/michel/.config/sway/bg/go.jpg fill
 
 #
 # Example configuration:
