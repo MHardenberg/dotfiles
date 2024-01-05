@@ -48,5 +48,5 @@ font:
     family: monospace
     style: Bold Italic
 
-  size: 14
+  size: 12
 live_config_reload: true
